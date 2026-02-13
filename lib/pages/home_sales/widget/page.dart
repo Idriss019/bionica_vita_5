@@ -1,4 +1,11 @@
-import 'package:bionica_vita_5/globalWidgets/costom_color_button.dart';
+
+import 'package:bionica_vita_5/pages/home_sales/widget/barcode_line.dart';
+import 'package:bionica_vita_5/pages/home_sales/widget/name_line.dart';
+import 'package:bionica_vita_5/pages/home_sales/widget/purchase_price_line.dart';
+import 'package:bionica_vita_5/pages/home_sales/widget/search_table_line.dart';
+import 'package:bionica_vita_5/pages/home_sales/widget/second_header_line.dart';
+import 'package:bionica_vita_5/pages/home_sales/widget/basket_table_line.dart';
+import 'package:bionica_vita_5/pages/home_sales/widget/bottom_buttons_line.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -6,8 +13,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int myDate = 0;
     const double gridHeight = 70;
-    const double gridMargin = 10;
     const double leftRightMargin = 15;
     const double borderHeight = 50;
     const TextStyle textStyle = TextStyle(
@@ -26,370 +33,127 @@ class HomePage extends StatelessWidget {
 
       child: Column(
         children: [
-          /* BarcodeWidget */
-          Container(
-            height: gridHeight,
-            // margin: EdgeInsets.only(bottom: gridMargin),
-            decoration: BoxDecoration(
-              border: Border.all(color: colorLineBorder, width: 0.5),
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Row(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: leftRightMargin),
-                        child: Text('Штрих-код', style: textStyle),
-                      ),
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(left: leftRightMargin),
-                          height: borderHeight,
-                          child: TextFieldCustom(textStyle: textStyle),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Row(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: leftRightMargin),
-                        child: Text('Количество', style: textStyle),
-                      ),
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(
-                            left: leftRightMargin,
-                            // right: textMargin,
-                          ),
-                          height: borderHeight,
-                          child: TextFieldCustom(textStyle: textStyle),
-                        ),
-                      ),
-                      // всего
-                      Container(
-                        margin: EdgeInsets.only(
-                          right: leftRightMargin,
-                          left: leftRightMargin,
-                        ),
-                        width: 85,
-                        height: borderHeight,
-                        child: TextFieldCustom(
-                          textStyle: textStyle,
-                          enabled: true,
-                          labelText: 'Всего',
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
+          BarcodeWidget(
+            gridHeight: gridHeight,
+            leftRightMargin: leftRightMargin,
+            borderHeight: borderHeight,
+            textStyle: textStyle,
+            colorLineBorder: colorLineBorder,
+            onDateChanged: (int date) {
+              myDate = date;
+            },
           ),
-          /* NameWidget */
-          Container(
-            height: gridHeight,
-            // margin: EdgeInsets.only(bottom: gridMargin),
-            decoration: BoxDecoration(
-              border: Border.all(color: colorLineBorder, width: 0.5),
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
-            child: Row(
-              children: [
-                Container(
-                  margin: EdgeInsets.only(left: leftRightMargin),
-                  child: Text('Название ', style: textStyle),
-                ),
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.only(
-                      left: leftRightMargin,
-                      right: leftRightMargin,
-                    ),
-                    height: borderHeight,
-                    child: TextFieldCustom(textStyle: textStyle),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          /* PurchasePriceWidget */
-          Container(
-            height: gridHeight,
-            decoration: BoxDecoration(
-              border: Border.all(color: colorLineBorder, width: 0.5),
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(left: leftRightMargin),
-                          child: Text('Себестоимость', style: textStyle),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(left: leftRightMargin),
-                          height: borderHeight,
-                          child: TextFieldCustom(textStyle: textStyle),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Row(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: leftRightMargin),
-                        child: Text('Цена  ', style: textStyle),
-                      ),
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(
-                            left: leftRightMargin,
-                            right: leftRightMargin,
-                          ),
-                          height: borderHeight,
-                          child: TextFieldCustom(textStyle: textStyle),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          /* PriceWidget */
-          Container(
-            height: gridHeight,
-            decoration: BoxDecoration(
-              border: Border.all(color: colorLineBorder, width: 0.5),
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(left: leftRightMargin),
-                          child: Text('Цена продажи', style: textStyle),
-                        ),
-                      ),
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(left: leftRightMargin),
-                          height: borderHeight,
-                          child: TextFieldCustom(textStyle: textStyle),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Expanded(
-                  child: Row(
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(left: leftRightMargin),
-                        child: Text('Сумма', style: textStyle),
-                      ),
-                      Expanded(
-                        child: Container(
-                          margin: EdgeInsets.only(
-                            left: leftRightMargin,
-                            right: leftRightMargin,
-                          ),
-                          height: borderHeight,
-                          child: TextFieldCustom(textStyle: textStyle),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ),
-          /* InputButtonWidget */
-          Container(
-            height: gridHeight,
-            decoration: BoxDecoration(
-              border: Border.all(color: colorLineBorder, width: 0.5),
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
-            child: Container(
-              width: double.infinity,
-              padding: EdgeInsets.only(
-                top: 10,
-                bottom: 10,
-                left: 130,
-                right: 130,
-              ),
-              child: CustomButton(text: 'Добавить', textStyle: textStyle),
-            ),
-          ),
-          /* TableWidget */
-          /* BottomButtonsWidget */
-          Container(
-            height: gridHeight,
 
-            decoration: BoxDecoration(
-              border: Border.all(color: colorLineBorder, width: 0.5),
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.only(top: 10, bottom: 10),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          margin: EdgeInsets.only(right: 8),
-                          height: double.infinity,
-                          width: 200,
-                          child: CustomButton(
-                            text: 'Продать',
-                            textStyle: textStyle,
-                          ),
-                        ),
-                        Container(
-                          margin: EdgeInsets.only(right: 8),
-                          child: CustomIconWidget(icon: Icon(Icons.delete)),
-                        ),
-                        CustomIconWidget(icon: Icon(Icons.restart_alt)),
-                      ],
-                    ),
-                  ),
-                ),
-                Expanded(
-                  child: Container(
-                    margin: EdgeInsets.only(right: 30, left: 30),
-                    child: Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(top: 6),
-                          child: Divider(
-                            height: 2,
-                            color: Theme.of(context).colorScheme.onSecondary,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 2),
-                          child: Divider(
-                            height: 2,
-                            color: Theme.of(context).colorScheme.onSecondary,
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 2),
-                          child: Container(
-                            margin: EdgeInsets.only(right: 15, left: 15),
-                            width: 400,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  'Итого',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 38,
-                                  ),
-                                ),
-                                Text(
-                                  '=',
-                                  style: TextStyle(
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 18,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 230,
-                                  child: TextFieldCustomWithOutline(
-                                    textStyle: textStyle,
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
+          NameWidget(
+            gridHeight: gridHeight,
+            leftRightMargin: leftRightMargin,
+            borderHeight: borderHeight,
+            textStyle: textStyle,
+            colorLineBorder: colorLineBorder,
           ),
-          Center(child: Text("Домашняя страница")),
+          PurchasePriceWidget(
+            gridHeight: gridHeight,
+            leftRightMargin: leftRightMargin,
+            borderHeight: borderHeight,
+            textStyle: textStyle,
+            colorLineBorder: colorLineBorder,
+          ),
+          // /* PriceWidget */
+          // Container(
+          //   height: gridHeight,
+          //   decoration: BoxDecoration(
+          //     border: Border.all(color: colorLineBorder, width: 0.5),
+          //     borderRadius: BorderRadius.all(Radius.circular(10)),
+          //   ),
+          //   child: Row(
+          //     children: [
+          //       Expanded(
+          //         child: Row(
+          //           children: [
+          //             Expanded(
+          //               child: Container(
+          //                 margin: EdgeInsets.only(left: leftRightMargin),
+          //                 child: Text('Цена продажи', style: textStyle),
+          //               ),
+          //             ),
+          //             Expanded(
+          //               child: Container(
+          //                 margin: EdgeInsets.only(left: leftRightMargin),
+          //                 height: borderHeight,
+          //                 child: TextFieldCustom(textStyle: textStyle),
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //       Expanded(
+          //         child: Row(
+          //           children: [
+          //             Container(
+          //               margin: EdgeInsets.only(left: leftRightMargin),
+          //               child: Text('Сумма', style: textStyle),
+          //             ),
+          //             Expanded(
+          //               child: Container(
+          //                 margin: EdgeInsets.only(
+          //                   left: leftRightMargin,
+          //                   right: leftRightMargin,
+          //                 ),
+          //                 height: borderHeight,
+          //                 child: TextFieldCustom(textStyle: textStyle),
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       ),
+          //     ],
+          //   ),
+          // ),
+          // /* InputButtonWidget */
+          // Container(
+          //   height: gridHeight,
+          //   decoration: BoxDecoration(
+          //     border: Border.all(color: colorLineBorder, width: 0.5),
+          //     borderRadius: BorderRadius.all(Radius.circular(10)),
+          //   ),
+          //   child: Container(
+          //     width: double.infinity,
+          //     padding: EdgeInsets.only(
+          //       top: 10,
+          //       bottom: 10,
+          //       left: 130,
+          //       right: 130,
+          //     ),
+          //     child: CustomButton(text: 'Добавить', textStyle: textStyle),
+          //   ),
+          // ),
+          SearchTableWidget(
+            gridHeight: gridHeight,
+            colorLineBorder: colorLineBorder,
+          ),
+          SecondHeaderWidget(
+            gridHeight: gridHeight,
+            leftRightMargin: leftRightMargin,
+            textStyle: textStyle,
+            colorLineBorder: colorLineBorder,
+          ),
+          BasketTableWidget(
+            gridHeight: gridHeight,
+            colorLineBorder: colorLineBorder,
+          ),
+          BottomButtonsWidget(
+            gridHeight: gridHeight,
+            leftRightMargin: leftRightMargin,
+            textStyle: textStyle,
+            colorLineBorder: colorLineBorder,
+          ),
         ],
       ),
     );
   }
 }
 
-class CustomIconWidget extends StatelessWidget {
-  const CustomIconWidget({super.key, required this.icon});
-  final Icon icon;
 
-  @override
-  Widget build(BuildContext context) {
-    return IconButton(
-      onPressed: () {},
-      icon: icon,
-      iconSize: 45,
-      padding: EdgeInsets.only(bottom: 5, left: 5, right: 5, top: 3),
-      color: Theme.of(context).colorScheme.onPrimary,
-      style: ButtonStyle(
-        shape: WidgetStateProperty.all(
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        ),
-        backgroundColor: CustomColorButton(
-          Theme.of(context).colorScheme.onSecondary,
-          Theme.of(context).colorScheme.outline,
-        ),
-      ),
-    );
-  }
-}
-
-class CustomButton extends StatelessWidget {
-  const CustomButton({super.key, required this.text, required this.textStyle});
-
-  final String text;
-  final TextStyle textStyle;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      style: ButtonStyle(
-        shape: WidgetStateProperty.all(
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-        ),
-        backgroundColor: CustomColorButton(
-          Theme.of(context).colorScheme.onSecondary,
-          Theme.of(context).colorScheme.outline,
-        ),
-      ),
-      onPressed: () {},
-      child: Text(
-        text,
-        style: textStyle.copyWith(
-          color: Theme.of(context).colorScheme.onPrimary,
-        ),
-      ),
-    );
-  }
-}
 // class DecorationContainer extends StatelessWidget {
 //   const DecorationContainer({super.key});
 
@@ -408,95 +172,3 @@ class CustomButton extends StatelessWidget {
 //     );
 //   }
 // }
-
-class TextFieldCustom extends StatelessWidget {
-  const TextFieldCustom({
-    super.key,
-    required this.textStyle,
-    this.labelText,
-    this.enabled = true,
-    this.labelStyle = const TextStyle(color: Colors.white),
-  });
-
-  final TextStyle textStyle;
-  final bool enabled;
-  final String? labelText;
-  final TextStyle labelStyle;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      style: textStyle,
-      decoration: InputDecoration(
-        enabled: enabled,
-        labelText: labelText,
-        // labelStyle: labelStyle,
-        contentPadding: EdgeInsets.only(
-          top: 0,
-          bottom: 10,
-          left: 10,
-          right: 10,
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-          borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.onSecondary,
-            width: 1.5,
-          ),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(
-            color: Theme.of(context).colorScheme.onSecondary,
-            width: 1.5,
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class TextFieldCustomWithOutline extends StatelessWidget {
-  const TextFieldCustomWithOutline({
-    super.key,
-    required this.textStyle,
-    this.labelText,
-    this.enabled = true,
-    this.labelStyle = const TextStyle(color: Colors.white),
-  });
-
-  final TextStyle textStyle;
-  final bool enabled;
-  final String? labelText;
-  final TextStyle labelStyle;
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      style: textStyle,
-      decoration: InputDecoration(
-        enabled: enabled,
-        labelText: labelText,
-        // labelStyle: labelStyle,
-        contentPadding: EdgeInsets.only(
-          top: 0,
-          bottom: 10,
-          left: 10,
-          right: 10,
-        ),
-        // enabledBorder: OutlineInputBorder(
-        //   borderRadius: BorderRadius.all(Radius.circular(10)),
-        //   borderSide: BorderSide(
-        //     color: Theme.of(context).colorScheme.onSecondary,
-        //     width: 1.5,
-        //   ),
-        // ),
-        // focusedBorder: OutlineInputBorder(
-        //   borderSide: BorderSide(
-        //     color: Theme.of(context).colorScheme.onSecondary,
-        //     width: 1.5,
-        //   ),
-        // ),
-      ),
-    );
-  }
-}

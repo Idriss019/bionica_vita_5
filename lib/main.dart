@@ -27,7 +27,7 @@ void main() {
   //  WidgetsFlutterBinding.ensureInitialized();
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     setWindowTitle('Bionica Vita 5');
-    setWindowMinSize(const Size(1024, 648));
+    setWindowMinSize(const Size(1024, 731));
     // setWindowMaxSize(const Size(1024, 748));
     setWindowFrame(const Rect.fromLTWH(100, 100, 1024, 748));
   }
@@ -52,18 +52,16 @@ class MyApp extends StatelessWidget {
       child: Consumer(
         builder: (context, ThemeProvider themeChange, child) {
           return MaterialApp.router(
-          title: 'Bionica Vita 5',
-          theme: mapTheme[themeChange.theme],
-          routerConfig: _router,
-          debugShowCheckedModeBanner: false,
-        );
-        }
+            title: 'Bionica Vita 5',
+            theme: mapTheme[themeChange.theme],
+            routerConfig: _router,
+            debugShowCheckedModeBanner: false,
+          );
+        },
       ),
     );
   }
 }
-
-
 
 CustomTransitionPage buildPageWithDefaultTransition<T>({
   required BuildContext context,
@@ -81,7 +79,6 @@ CustomTransitionPage buildPageWithDefaultTransition<T>({
 
 final _router = GoRouter(
   routes: [
-   
     GoRoute(
       path: '/',
       pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
@@ -89,118 +86,127 @@ final _router = GoRouter(
         state: state,
         child: PasswordPage(),
       ),
-      
+
       routes: [
-         ShellRoute(
-      builder: (context, state, child) {
-        return NavBarPage(child: child);
-      },
-      routes: [
-        GoRoute(
-          path: 'home',
-          pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
-            context: context,
-            state: state,
-            child: HomePage(),
-          ),
-        ),
-        GoRoute(
-          path: 'purchases',
-          pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
-            context: context,
-            state: state,
-            child: PurchasesPage(),
-          ),
-        ),
-        GoRoute(
-          path: 'storage',
-          pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
-            context: context,
-            state: state,
-            child: StoragePage(),
-          ),
-        ),
-        GoRoute(
-          path: 'accounting',
-          pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
-            context: context,
-            state: state,
-            child: AccountingPage(),
-          ),
-        ),
-        GoRoute(
-          path: 'reports',
-          pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
-            context: context,
-            state: state,
-            child: ReportsPage(),
-          ),
-        ),
-        GoRoute(
-          path: 'tables',
-          pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
-            context: context,
-            state: state,
-            child: TablesPage(),
-          ),
+        ShellRoute(
+          builder: (context, state, child) {
+            return NavBarPage(child: child);
+          },
           routes: [
+            GoRoute(
+              path: 'home',
+              pageBuilder: (context, state) =>
+                  buildPageWithDefaultTransition<void>(
+                    context: context,
+                    state: state,
+                    child: HomePage(),
+                  ),
+            ),
+            GoRoute(
+              path: 'purchases',
+              pageBuilder: (context, state) =>
+                  buildPageWithDefaultTransition<void>(
+                    context: context,
+                    state: state,
+                    child: PurchasesPage(),
+                  ),
+            ),
             GoRoute(
               path: 'storage',
               pageBuilder: (context, state) =>
                   buildPageWithDefaultTransition<void>(
                     context: context,
                     state: state,
-                    child: SizedBox()// StoragePageWidget(),
+                    child: StoragePage(),
                   ),
             ),
             GoRoute(
-              path: 'sales',
+              path: 'accounting',
               pageBuilder: (context, state) =>
                   buildPageWithDefaultTransition<void>(
                     context: context,
                     state: state,
-                    child: SizedBox()// SalesTableWidget(),
+                    child: AccountingPage(),
                   ),
             ),
             GoRoute(
-              path: 'purchaseTable',
-              pageBuilder: (context, state) {
-                return buildPageWithDefaultTransition<void>(
-                  context: context,
-                  state: state,
-                  child: SizedBox()// PurchasesTableWidget(),
-                );
-              },
+              path: 'reports',
+              pageBuilder: (context, state) =>
+                  buildPageWithDefaultTransition<void>(
+                    context: context,
+                    state: state,
+                    child: ReportsPage(),
+                  ),
+            ),
+            GoRoute(
+              path: 'tables',
+              pageBuilder: (context, state) =>
+                  buildPageWithDefaultTransition<void>(
+                    context: context,
+                    state: state,
+                    child: TablesPage(),
+                  ),
+              routes: [
+                GoRoute(
+                  path: 'storage',
+                  pageBuilder: (context, state) =>
+                      buildPageWithDefaultTransition<void>(
+                        context: context,
+                        state: state,
+                        child: SizedBox(), // StoragePageWidget(),
+                      ),
+                ),
+                GoRoute(
+                  path: 'sales',
+                  pageBuilder: (context, state) =>
+                      buildPageWithDefaultTransition<void>(
+                        context: context,
+                        state: state,
+                        child: SizedBox(), // SalesTableWidget(),
+                      ),
+                ),
+                GoRoute(
+                  path: 'purchaseTable',
+                  pageBuilder: (context, state) {
+                    return buildPageWithDefaultTransition<void>(
+                      context: context,
+                      state: state,
+                      child: SizedBox(), // PurchasesTableWidget(),
+                    );
+                  },
+                ),
+              ],
+            ),
+
+            GoRoute(
+              path: 'recalculation',
+              pageBuilder: (context, state) =>
+                  buildPageWithDefaultTransition<void>(
+                    context: context,
+                    state: state,
+                    child: RecalculationPage(),
+                  ),
+            ),
+            GoRoute(
+              path: 'staff',
+              pageBuilder: (context, state) =>
+                  buildPageWithDefaultTransition<void>(
+                    context: context,
+                    state: state,
+                    child: StaffPage(),
+                  ),
+            ),
+            GoRoute(
+              path: 'settings',
+              pageBuilder: (context, state) =>
+                  buildPageWithDefaultTransition<void>(
+                    context: context,
+                    state: state,
+                    child: SettingsPage(),
+                  ),
             ),
           ],
         ),
-        
-        GoRoute(
-          path: 'recalculation',
-          pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
-            context: context,
-            state: state,
-            child: RecalculationPage(),
-          ),
-        ),
-        GoRoute(
-          path: 'staff',
-          pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
-            context: context,
-            state: state,
-            child: StaffPage(),
-          ),
-        ),
-        GoRoute(
-          path: 'settings',
-          pageBuilder: (context, state) => buildPageWithDefaultTransition<void>(
-            context: context,
-            state: state,
-            child: SettingsPage(),
-          ),
-        ),
-      ],
-    ),
       ],
     ),
   ],
