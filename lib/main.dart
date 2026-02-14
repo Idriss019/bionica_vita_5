@@ -6,6 +6,9 @@ import 'package:bionica_vita_5/pages/home_sales/widget/page.dart';
 import 'package:bionica_vita_5/pages/nav_bar.dart';
 import 'package:bionica_vita_5/pages/password/cubit/password_cubit.dart';
 import 'package:bionica_vita_5/pages/password/widget/page.dart';
+import 'package:bionica_vita_5/pages/purchases/widget/bringingParcel/widget/page.dart';
+import 'package:bionica_vita_5/pages/purchases/widget/cartCheckout/widget/page.dart';
+import 'package:bionica_vita_5/pages/purchases/widget/collectingBaskets/widget/page.dart';
 import 'package:bionica_vita_5/pages/purchases/widget/page.dart';
 import 'package:bionica_vita_5/pages/recalculation/widget/page.dart';
 import 'package:bionica_vita_5/pages/reports/widget/page.dart';
@@ -110,6 +113,35 @@ final _router = GoRouter(
                     state: state,
                     child: PurchasesPage(),
                   ),
+              routes: [
+                GoRoute(
+                  path: 'cart_checkout',
+                  pageBuilder: (context, state) =>
+                      buildPageWithDefaultTransition<void>(
+                        context: context,
+                        state: state,
+                        child: CartCheckoutPage(),
+                      ),
+                ),
+                GoRoute(
+                  path: 'collecting_baskets',
+                  pageBuilder: (context, state) =>
+                      buildPageWithDefaultTransition<void>(
+                        context: context,
+                        state: state,
+                        child: CollectingBasketsPage(),
+                      ),
+                ),
+                GoRoute(
+                  path: 'bringing_parcel',
+                  pageBuilder: (context, state) =>
+                      buildPageWithDefaultTransition<void>(
+                        context: context,
+                        state: state,
+                        child: BringingParcelPage(),
+                      ),
+                ),
+              ],
             ),
             GoRoute(
               path: 'storage',
