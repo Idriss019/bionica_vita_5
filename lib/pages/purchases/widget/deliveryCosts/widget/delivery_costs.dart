@@ -1,9 +1,8 @@
 import 'package:bionica_vita_5/globalWidgets/global_widgets.dart';
-import 'package:bionica_vita_5/pages/purchases/widget/bringingParcel/widget/header_line.dart';
 import 'package:flutter/material.dart';
 
-class BringingParcelPage extends StatelessWidget {
-  const BringingParcelPage({super.key});
+class DeliveryCostsPage extends StatelessWidget {
+  const DeliveryCostsPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +22,19 @@ class BringingParcelPage extends StatelessWidget {
       ),
       child: Column(
         children: [
-          HeaderWidget(
-            gridHeight: gridHeight,
-            leftRightMargin: leftRightMargin,
-            textStyle: textStyle,
-            colorLineBorder: colorLineBorder,
-          ),
+          Container(
+              height: gridHeight,
+              decoration: BoxDecoration(
+                border: Border.all(color: colorLineBorder, width: 0.5),
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+              ),
+              child: Center(
+                child: Container(
+                  margin: EdgeInsets.only(left: leftRightMargin),
+                  child: Text('Расходы на доставку', style: textStyle),
+                ),
+              ),
+            ),
           /* Find */
           Container(
             height: gridHeight,

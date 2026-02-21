@@ -73,6 +73,24 @@ class PurchasesPage extends StatelessWidget {
               height: double.infinity,
               width: double.infinity,
               child: CustomButton(
+                text: 'Расходы на доставку',
+                textStyle: textStyle,
+                onPressed: () => context.go('/purchases/delivery_costs'),
+              ),
+            ),
+          ),
+          Container(
+            height: gridHeight,
+            margin: EdgeInsets.only(bottom: 6),
+            decoration: BoxDecoration(
+              border: Border.all(color: colorLineBorder, width: 0.5),
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
+            child: SizedBox(
+              // margin: EdgeInsets.only(right: 8),
+              height: double.infinity,
+              width: double.infinity,
+              child: CustomButton(
                 text: 'Внесение посылки',
                 textStyle: textStyle,
                 onPressed: () => context.go('/purchases/bringing_parcel'),

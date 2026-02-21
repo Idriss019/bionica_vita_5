@@ -9,6 +9,7 @@ import 'package:bionica_vita_5/pages/password/widget/page.dart';
 import 'package:bionica_vita_5/pages/purchases/widget/bringingParcel/widget/page.dart';
 import 'package:bionica_vita_5/pages/purchases/widget/cartCheckout/widget/page.dart';
 import 'package:bionica_vita_5/pages/purchases/widget/collectingBaskets/widget/page.dart';
+import 'package:bionica_vita_5/pages/purchases/widget/deliveryCosts/widget/delivery_costs.dart';
 import 'package:bionica_vita_5/pages/purchases/widget/page.dart';
 import 'package:bionica_vita_5/pages/recalculation/widget/page.dart';
 import 'package:bionica_vita_5/pages/reports/widget/page.dart';
@@ -130,6 +131,15 @@ final _router = GoRouter(
                         context: context,
                         state: state,
                         child: CollectingBasketsPage(),
+                      ),
+                ),
+                GoRoute(
+                  path: 'delivery_costs',
+                  pageBuilder: (context, state) =>
+                      buildPageWithDefaultTransition<void>(
+                        context: context,
+                        state: state,
+                        child: DeliveryCostsPage(),
                       ),
                 ),
                 GoRoute(
