@@ -1,7 +1,8 @@
 import 'dart:io';
 
 import 'package:bionica_vita_5/globalProviders/second_color_provider.dart';
-import 'package:bionica_vita_5/pages/accounting/widget/page.dart';
+import 'package:bionica_vita_5/pages/costs/widget/page.dart';
+import 'package:bionica_vita_5/pages/debts/widget/page.dart';
 import 'package:bionica_vita_5/pages/home_sales/widget/page.dart';
 import 'package:bionica_vita_5/pages/nav_bar.dart';
 import 'package:bionica_vita_5/pages/password/cubit/password_cubit.dart';
@@ -9,7 +10,7 @@ import 'package:bionica_vita_5/pages/password/widget/page.dart';
 import 'package:bionica_vita_5/pages/purchases/widget/bringingParcel/widget/page.dart';
 import 'package:bionica_vita_5/pages/purchases/widget/cartCheckout/widget/page.dart';
 import 'package:bionica_vita_5/pages/purchases/widget/collectingBaskets/widget/page.dart';
-import 'package:bionica_vita_5/pages/purchases/widget/deliveryCosts/widget/delivery_costs.dart';
+import 'package:bionica_vita_5/pages/purchases/widget/deliveryCosts/widget/page.dart';
 import 'package:bionica_vita_5/pages/purchases/widget/page.dart';
 import 'package:bionica_vita_5/pages/recalculation/widget/page.dart';
 import 'package:bionica_vita_5/pages/reports/widget/page.dart';
@@ -163,12 +164,21 @@ final _router = GoRouter(
                   ),
             ),
             GoRoute(
-              path: 'accounting',
+              path: 'costs',
               pageBuilder: (context, state) =>
                   buildPageWithDefaultTransition<void>(
                     context: context,
                     state: state,
-                    child: AccountingPage(),
+                    child: CostsPage(),
+                  ),
+            ),
+            GoRoute(
+              path: 'debts',
+              pageBuilder: (context, state) =>
+                  buildPageWithDefaultTransition<void>(
+                    context: context,
+                    state: state,
+                    child: DebtsPage(),
                   ),
             ),
             GoRoute(

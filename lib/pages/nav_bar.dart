@@ -67,14 +67,24 @@ class _NavBarPageState extends State<NavBarPage> {
         iconIndex: 3,
       ),
       Item(
-        title: 'Бухучет',
+        title: 'Расходы',
         icon: const Icon(Icons.auto_stories_outlined),
         onPress: () {
           onPress = false;
-          context.go('/accounting');
+          context.go('/costs');
           selectIndex = 4;
         },
         iconIndex: 4,
+      ),
+      Item(
+        title: 'Долги',
+        icon: const Icon(Icons.handshake),
+        onPress: () {
+          onPress = false;
+          context.go('/debts');
+          selectIndex = 5;
+        },
+        iconIndex: 5,
       ),
       Item(
         title: 'Отчеты',
@@ -82,9 +92,9 @@ class _NavBarPageState extends State<NavBarPage> {
         onPress: () {
           onPress = false;
           context.go('/reports');
-          selectIndex = 5;
+          selectIndex = 6;
         },
-        iconIndex: 5,
+        iconIndex: 6,
       ),
       Item(
         title: 'Таблицы',
@@ -92,9 +102,9 @@ class _NavBarPageState extends State<NavBarPage> {
         onPress: () {
           onPress = false;
           context.go('/tables');
-          selectIndex = 6;
+          selectIndex = 7;
         },
-        iconIndex: 6,
+        iconIndex: 7,
       ),
       Item(
         title: 'Перерасчет',
@@ -102,9 +112,9 @@ class _NavBarPageState extends State<NavBarPage> {
         onPress: () {
           onPress = false;
           context.go('/recalculation');
-          selectIndex = 7;
+          selectIndex = 8;
         },
-        iconIndex: 7,
+        iconIndex: 8,
       ),
       Item(
         title: 'Персонал',
@@ -112,9 +122,9 @@ class _NavBarPageState extends State<NavBarPage> {
         onPress: () {
           onPress = false;
           context.go('/staff');
-          selectIndex = 8;
+          selectIndex = 9;
         },
-        iconIndex: 8,
+        iconIndex: 9,
       ),
       Item(
         title: 'Тема',
@@ -126,7 +136,7 @@ class _NavBarPageState extends State<NavBarPage> {
             themeProvider.updateTheme('light');
           }
         }),
-        iconIndex: 9,
+        iconIndex: 10,
       ),
       Item(
         title: 'Настройки',
@@ -134,9 +144,9 @@ class _NavBarPageState extends State<NavBarPage> {
         onPress: () {
           onPress = false;
           context.go('/settings');
-          selectIndex = 10;
+          selectIndex = 11;
         },
-        iconIndex: 10,
+        iconIndex: 11,
       ),
     ];
     List<Item> rows2 = rows.sublist(1);
