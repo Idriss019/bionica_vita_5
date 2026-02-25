@@ -1,17 +1,17 @@
 import 'package:bionica_vita_5/globalWidgets/global_widgets.dart';
 import 'package:flutter/material.dart';
 
-class ButtonLineWidget extends StatelessWidget {
-  final double gridHeight;
-  final TextStyle textStyle;
-  final Color colorLineBorder;
-
-  const ButtonLineWidget({
+class CancelWidgetLine extends StatelessWidget {
+  const CancelWidgetLine({
     super.key,
     required this.gridHeight,
     required this.textStyle,
     required this.colorLineBorder,
   });
+
+  final double gridHeight;
+  final TextStyle textStyle;
+  final Color colorLineBorder;
 
   @override
   Widget build(BuildContext context) {
@@ -23,9 +23,14 @@ class ButtonLineWidget extends StatelessWidget {
       ),
       child: Container(
         width: double.infinity,
-        margin: EdgeInsets.only(left: 120, top: 10, bottom: 10, right: 120),
+        margin: EdgeInsets.only(
+          left: 120,
+          top: 10,
+          bottom: 10,
+          right: 120,
+        ),
         child: CustomButton(
-          text: 'Добавить изменения',
+          text: 'Отменить',
           textStyle: textStyle,
           onPressed: () {},
         ),

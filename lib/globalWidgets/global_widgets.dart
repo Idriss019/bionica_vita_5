@@ -19,6 +19,7 @@ class TextFieldCustom extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       style: textStyle,
+      cursorColor: Theme.of(context).colorScheme.onSecondary,
       decoration: InputDecoration(
         enabled: enabled,
         labelText: labelText,
@@ -65,6 +66,7 @@ class TextFieldCustomWithOutline extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextField(
       style: textStyle,
+      cursorColor: Theme.of(context).colorScheme.onSecondary,
       decoration: InputDecoration(
         enabled: enabled,
         labelText: labelText,
@@ -74,6 +76,16 @@ class TextFieldCustomWithOutline extends StatelessWidget {
           bottom: 10,
           left: 10,
           right: 10,
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.onSecondary,
+          ),
+        ),
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Theme.of(context).colorScheme.onSecondary,
+          ),
         ),
         // enabledBorder: OutlineInputBorder(
         //   borderRadius: BorderRadius.all(Radius.circular(10)),

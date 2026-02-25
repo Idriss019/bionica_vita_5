@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
 
-class TableBasketsLineWidget extends StatelessWidget {
-  final double gridHeight;
-  final double leftRightMargin;
-  final TextStyle textStyle;
-  final Color colorLineBorder;
-
-  const TableBasketsLineWidget({
+class TableWidgetLine extends StatelessWidget {
+  const TableWidgetLine({
     super.key,
     required this.gridHeight,
-    required this.leftRightMargin,
-    required this.textStyle,
     required this.colorLineBorder,
   });
+
+  final double gridHeight;
+  final Color colorLineBorder;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: gridHeight * 7,
+      height: gridHeight * 3,
       decoration: BoxDecoration(
         border: Border.all(color: colorLineBorder, width: 0.5),
         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -53,7 +49,18 @@ class TableBasketsLineWidget extends StatelessWidget {
                 SizedBox(
                   width: 100,
                   child: Text(
-                    'Сумма',
+                    'Срок',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 80,
+                  child: Text(
+                    'Цена',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14,
@@ -62,9 +69,9 @@ class TableBasketsLineWidget extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 100,
+                  width: 80,
                   child: Text(
-                    'Граммы',
+                    'Ост.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14,
@@ -73,9 +80,9 @@ class TableBasketsLineWidget extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 100,
+                  width: 80,
                   child: Text(
-                    'Объем',
+                    'Под.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14,
@@ -84,9 +91,9 @@ class TableBasketsLineWidget extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 100,
+                  width: 80,
                   child: Text(
-                    'Доставка',
+                    'Сбросить',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14,

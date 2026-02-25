@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'header_line_widget.dart';
-import 'table_baskets_line_widget.dart';
+import 'table_parcels_line_widget.dart';
 import 'delivery_line_widget.dart';
 import 'button_line_widget.dart';
+import 'input_expiration_date_line_widget.dart';
+import 'parcel_line_widget.dart';
+import 'table_parcel_line_widget.dart';
 
 class DeliveryCostsPage extends StatelessWidget {
   const DeliveryCostsPage({super.key});
@@ -17,39 +20,65 @@ class DeliveryCostsPage extends StatelessWidget {
       fontSize: 25,
     );
     const Color colorLineBorder = Color.fromARGB(150, 112, 110, 0);
-    return Container(
-      margin: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
-      decoration: BoxDecoration(
-        border: Border.all(color: colorLineBorder, width: 0.5),
-        borderRadius: BorderRadius.all(Radius.circular(10)),
-      ),
-      child: Column(
-        children: [
-          HeaderLineWidget(
-            gridHeight: gridHeight,
-            leftRightMargin: leftRightMargin,
-            textStyle: textStyle,
-            colorLineBorder: colorLineBorder,
-          ),
-          TableBasketsLineWidget(
-            gridHeight: gridHeight,
-            leftRightMargin: leftRightMargin,
-            textStyle: textStyle,
-            colorLineBorder: colorLineBorder,
-          ),
-          DeliveryLineWidget(
-            gridHeight: gridHeight,
-            leftRightMargin: leftRightMargin,
-            borderHeight: borderHeight,
-            textStyle: textStyle,
-            colorLineBorder: colorLineBorder,
-          ),
-          ButtonLineWidget(
-            gridHeight: gridHeight,
-            textStyle: textStyle,
-            colorLineBorder: colorLineBorder,
-          ),
-        ],
+    int myDate = 0;
+    dynamic Function(int) onDateChanged(int date) {
+      return (int date) {
+        myDate = date;
+      };
+    }
+
+    return SingleChildScrollView(
+      child: Container(
+        margin: EdgeInsets.only(top: 15, left: 15, right: 15, bottom: 15),
+        decoration: BoxDecoration(
+          border: Border.all(color: colorLineBorder, width: 0.5),
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
+        child: Column(
+          children: [
+            HeaderLineWidget(
+              gridHeight: gridHeight,
+              leftRightMargin: leftRightMargin,
+              textStyle: textStyle,
+              colorLineBorder: colorLineBorder,
+            ),
+            TableParcelsLineWidget(
+              gridHeight: gridHeight,
+              leftRightMargin: leftRightMargin,
+              textStyle: textStyle,
+              colorLineBorder: colorLineBorder,
+            ),
+            DeliveryLineWidget(
+              gridHeight: gridHeight,
+              leftRightMargin: leftRightMargin,
+              borderHeight: borderHeight,
+              textStyle: textStyle,
+              colorLineBorder: colorLineBorder,
+            ),
+            InputExpirationDateLineWidget(
+              gridHeight: gridHeight,
+              leftRightMargin: leftRightMargin,
+              textStyle: textStyle,
+              colorLineBorder: colorLineBorder,
+              onDateChanged: onDateChanged,
+            ),
+            ParcelLineWidget(
+              gridHeight: gridHeight,
+              leftRightMargin: leftRightMargin,
+              colorLineBorder: colorLineBorder,
+              textStyle: textStyle,
+            ),
+            TableParcelLineWidget(
+              gridHeight: gridHeight,
+              colorLineBorder: colorLineBorder,
+            ),
+            ButtonLineWidget(
+              gridHeight: gridHeight,
+              textStyle: textStyle,
+              colorLineBorder: colorLineBorder,
+            ),
+          ],
+        ),
       ),
     );
   }
