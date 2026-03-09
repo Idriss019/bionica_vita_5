@@ -451,25 +451,7 @@ class _KeyboardPasswordState extends State<KeyboardPassword> {
                           ),
                         ),
                       ),
-                      Expanded(
-                        child: SizedBox(
-                          child: TextButton(
-                            onPressed: () {
-                              passwordBloc.plusValueState('3');
-                              // inputController.text += '3';
-                              // setState(() {
-                              // passwordBloc.inputPassword(
-                              //   '${passwordBloc.state.inputPassword}3',
-                              //   // passwordController.text += '3',
-                              // );
-                              // passwordController.text += '3';
-                              // }
-                              // );
-                            },
-                            child: Text('3', style: TextStyle(fontSize: 40)),
-                          ),
-                        ),
-                      ),
+                      KeyboardButton(passwordBloc: passwordBloc, value: '3'),
                     ],
                   ),
                   Row(
@@ -699,6 +681,30 @@ class _KeyboardPasswordState extends State<KeyboardPassword> {
             //   ),
             // ),
           ],
+        ),
+      ),
+    );
+  }
+}
+
+class KeyboardButton extends StatelessWidget {
+  const KeyboardButton({
+    super.key,
+    required this.value,
+    required this.passwordBloc,
+  });
+  final String value;
+  final PasswordCubit passwordBloc;
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: SizedBox(
+        child: TextButton(
+          onPressed: () {
+            passwordBloc.plusValueState(value);
+          },
+          child: Text(value, style: TextStyle(fontSize: 40)),
         ),
       ),
     );

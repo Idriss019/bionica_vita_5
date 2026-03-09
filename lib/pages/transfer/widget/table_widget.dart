@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SearchTableWidget extends StatelessWidget {
-  const SearchTableWidget({
+class TableWidget extends StatelessWidget {
+  const TableWidget({
     super.key,
     required this.gridHeight,
     required this.colorLineBorder,
@@ -13,7 +13,7 @@ class SearchTableWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: gridHeight * 2,
+      height: gridHeight * 4,
       decoration: BoxDecoration(
         border: Border.all(color: colorLineBorder, width: 0.5),
         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -36,7 +36,7 @@ class SearchTableWidget extends StatelessWidget {
                 SizedBox(
                   width: 80,
                   child: Text(
-                    'Доб.',
+                    '⬇',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 16,
@@ -63,29 +63,29 @@ class SearchTableWidget extends StatelessWidget {
                     'Срок',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 14,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
                 ),
                 SizedBox(
-                  width: 150,
+                  width: 100,
                   child: Text(
                     'Цена',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 14,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
                 ),
                 SizedBox(
-                  width: 150,
+                  width: 100,
                   child: Text(
-                    'Себест.',
+                    'Кол.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 14,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),

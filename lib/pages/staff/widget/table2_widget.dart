@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SearchTableWidget extends StatelessWidget {
-  const SearchTableWidget({
+class Table2Widget extends StatelessWidget {
+  const Table2Widget({
     super.key,
     required this.gridHeight,
     required this.colorLineBorder,
@@ -13,7 +13,7 @@ class SearchTableWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: gridHeight * 2,
+      height: gridHeight * 5,
       decoration: BoxDecoration(
         border: Border.all(color: colorLineBorder, width: 0.5),
         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -34,12 +34,35 @@ class SearchTableWidget extends StatelessWidget {
             child: Row(
               children: [
                 SizedBox(
-                  width: 80,
+                  width: 300,
                   child: Text(
-                    'Доб.',
+                    'Полномочия',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 14,
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    ),
+                  ),
+                ),
+
+                SizedBox(
+                  width: 25,
+                  child: Text(
+                    'Раз',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 250,
+                  child: Text(
+                    'Страница',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
@@ -47,46 +70,13 @@ class SearchTableWidget extends StatelessWidget {
                 Expanded(
                   child: SizedBox(
                     child: Text(
-                      'Название',
+                      'Полное описание',
                       textAlign: TextAlign.center,
                       maxLines: 1,
                       style: TextStyle(
                         fontSize: 18,
                         color: Theme.of(context).colorScheme.onPrimary,
                       ),
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 100,
-                  child: Text(
-                    'Срок',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Theme.of(context).colorScheme.onPrimary,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 150,
-                  child: Text(
-                    'Цена',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Theme.of(context).colorScheme.onPrimary,
-                    ),
-                  ),
-                ),
-                SizedBox(
-                  width: 150,
-                  child: Text(
-                    'Себест.',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
                 ),

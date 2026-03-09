@@ -20,9 +20,13 @@ class TextFieldCustom extends StatelessWidget {
     return TextField(
       style: textStyle,
       cursorColor: Theme.of(context).colorScheme.onSecondary,
+
       decoration: InputDecoration(
         enabled: enabled,
         labelText: labelText,
+        labelStyle: labelStyle,
+        // helperStyle: const TextStyle(color: Colors.black),
+        // labelStyle: labelStyle,
         // labelStyle: labelStyle,
         contentPadding: EdgeInsets.only(
           top: 0,

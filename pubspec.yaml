@@ -43,6 +43,8 @@ dependencies:
   drift: ^2.31.0
   equatable: ^2.0.8
   intl: ^0.20.2
+  bcrypt: ^1.2.0
+  http: ^1.6.0
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,7 @@
-// import 'package:bionica_vita_5/globalWidgets/custom_color_button.dart';
+import 'package:bionica_vita_5/globalWidgets/custom_color_button.dart';
 import 'package:bionica_vita_5/globalWidgets/global_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 // class CustomButton extends StatelessWidget {
 //   const CustomButton({
@@ -68,6 +69,35 @@ class FindWidget extends StatelessWidget {
           Expanded(
             child: Row(
               children: [
+                Container(
+                  height: gridHeight,
+                  margin: EdgeInsets.only(
+                    left: leftRightMargin,
+                    top: 10,
+                    bottom: 10,
+                  ),
+                  child: CustomButton(
+                    text: DateFormat('dd.MM').format(
+                      DateTime.now(),
+                    ), //DateTime.now().toString().substring(0, 10),
+                    textStyle: textStyle,
+                    onPressed: () async {
+                      final initialDate = DateTime.now();
+                      final picked = await showDatePicker(
+                        context: context,
+                        initialDate: initialDate,
+                        firstDate: DateTime(2000),
+                        lastDate: DateTime(2100),
+                      );
+
+                      if (picked == null) {
+                        return;
+                      }
+
+                      onDateChanged(picked.millisecondsSinceEpoch);
+                    },
+                  ),
+                ),
                 Container(
                   margin: EdgeInsets.only(left: leftRightMargin),
                   child: Text('Поиск ', style: textStyle),

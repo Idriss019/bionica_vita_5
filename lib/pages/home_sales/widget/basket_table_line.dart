@@ -13,7 +13,7 @@ class BasketTableWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: gridHeight * 3,
+      height: gridHeight * 4,
       decoration: BoxDecoration(
         border: Border.all(color: colorLineBorder, width: 0.5),
         borderRadius: BorderRadius.all(Radius.circular(10)),

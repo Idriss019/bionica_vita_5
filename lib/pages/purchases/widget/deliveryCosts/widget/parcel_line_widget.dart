@@ -25,29 +25,65 @@ class ParcelLineWidget extends StatelessWidget {
       child: Container(
         width: double.infinity,
         margin: EdgeInsets.only(left: leftRightMargin),
-        child: Center(
-          child: RichText(
-            text: TextSpan(
-              // Базовый стиль (нормальный для стрелок)
-              style: textStyle,
-              children: [
-                TextSpan(text: '⬇ '),
-                TextSpan(
-                  text: 'Посылка отдельно',
-                  // Применяем курсив только к тексту
-                  style: textStyle.copyWith(
-                    fontSize: 28,
-                    fontStyle: FontStyle.italic,
-                    fontWeight: FontWeight.normal,
-                    color: Theme.of(context).colorScheme.onSecondary,
-                  ),
-                ),
-                TextSpan(text: ' ⬇'),
-              ],
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              height: gridHeight,
+              margin: EdgeInsets.only(
+                // left: leftRightMargin,
+                top: 10,
+                bottom: 10,
+              ),
+              child: Icon(Icons.arrow_downward),
             ),
-          ),
+            Container(
+              margin: EdgeInsets.only(left: leftRightMargin),
+              child: Text(
+                'Посылка отдельно',
+                style: textStyle.copyWith(
+                  fontSize: 28,
+                  fontStyle: FontStyle.italic,
+                  fontWeight: FontWeight.normal,
+                  color: Theme.of(context).colorScheme.onSecondary,
+                ),
+              ),
+            ),
+            Container(
+              height: gridHeight,
+              margin: EdgeInsets.only(
+                left: leftRightMargin,
+                top: 10,
+                bottom: 10,
+              ),
+              child: Icon(Icons.arrow_downward),
+            ),
+          ],
         ),
       ),
+      // Center(
+      //   child: RichText(
+      //     text: TextSpan(
+      //       // Базовый стиль (нормальный для стрелок)
+      //       style: textStyle,
+      //       children: [
+      //         TextSpan(text: '⬇ '),
+      //         TextSpan(
+      //           text: 'Посылка отдельно',
+      //           // Применяем курсив только к тексту
+      //           style: textStyle.copyWith(
+      //             fontSize: 28,
+      //             fontStyle: FontStyle.italic,
+      //             fontWeight: FontWeight.normal,
+      //             color: Theme.of(context).colorScheme.onSecondary,
+      //           ),
+      //         ),
+      //         TextSpan(text: ' ⬇'),
+      //       ],
+      //     ),
+      //   ),
+      // ),
+      // ),
     );
   }
 }

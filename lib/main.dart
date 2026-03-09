@@ -1,8 +1,8 @@
 import 'dart:io';
 
 import 'package:bionica_vita_5/globalProviders/second_color_provider.dart';
-import 'package:bionica_vita_5/pages/costs/widget/page.dart';
-import 'package:bionica_vita_5/pages/debts/widget/page.dart';
+import 'package:bionica_vita_5/pages/costs/widget/costs_page.dart';
+import 'package:bionica_vita_5/pages/debts/widget/debts_page.dart';
 import 'package:bionica_vita_5/pages/home_sales/widget/page.dart';
 import 'package:bionica_vita_5/pages/nav_bar.dart';
 import 'package:bionica_vita_5/pages/password/cubit/password_cubit.dart';
@@ -14,10 +14,12 @@ import 'package:bionica_vita_5/pages/purchases/widget/deliveryCosts/widget/page.
 import 'package:bionica_vita_5/pages/purchases/widget/page.dart';
 import 'package:bionica_vita_5/pages/recalculation/widget/page.dart';
 import 'package:bionica_vita_5/pages/reports/widget/page.dart';
+import 'package:bionica_vita_5/pages/sales_baskets/widget/sales_baskets_page.dart';
 import 'package:bionica_vita_5/pages/settings/widget/page.dart';
 import 'package:bionica_vita_5/pages/staff/widget/page.dart';
 import 'package:bionica_vita_5/pages/storage/widget/page.dart';
 import 'package:bionica_vita_5/pages/tables/widget/page.dart';
+import 'package:bionica_vita_5/pages/transfer/widget/transfer_page.dart';
 import 'package:bionica_vita_5/theme/dataClass/theme.dart';
 import 'package:bionica_vita_5/theme/provider/theme_change.dart';
 import 'package:flutter/material.dart';
@@ -25,18 +27,74 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:window_size/window_size.dart';
+import 'package:bionica_vita_5/functions/password_service.dart';
+
+import 'package:http/http.dart' as http;
+import 'dart:convert';
 
 void main() {
   runApp(MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
 
-  //  WidgetsFlutterBinding.ensureInitialized();
   if (Platform.isWindows || Platform.isLinux || Platform.isMacOS) {
     setWindowTitle('Bionica Vita 5');
     setWindowMinSize(const Size(1024, 731));
     // setWindowMaxSize(const Size(1024, 748));
     setWindowFrame(const Rect.fromLTWH(100, 100, 1024, 748));
   }
+
+  String root = PasswordService.hashPassword('1233');
+  // $2a$12$rGURJI/G47gzTs/4ZpioE.50xFB5HC921zGv65ttju07M6Wd99FgG // 1233
+  String hash = root;
+  bool test = PasswordService.verifyPassword('1233', hash);
+  print('test: $test');
+  print('hash: $hash');
+  // print(test);
+  // String powers = '';
+  // for (int i = 0; i < 40; i++) {
+  //   powers += '1';
+  // }
+  // print(powers);
+
+  // requestAuth('1233');
+  // requestAuth('1233');
 }
+
+// Future<void> request(String password) async {
+//   final response = await http.get(Uri.parse('http://127.0.0.1:8080/users'));
+
+//   if (response.statusCode == 200) {
+//     final data = jsonDecode(response.body);
+//     // print('data');
+//     print(response.headers['content-type']);
+//     print(response.body);
+//     Map userAuth;
+//     data.forEach((user) {
+//       if (PasswordService.verifyPassword(password, user['password'])) {
+//         userAuth = user;
+//         print('userAuth');
+//         print(userAuth);
+//       }
+//     });
+//   } else {
+//     print('Ошибка: ${response.statusCode}');
+//   }
+// }
+
+// Future<void> requestAuth(String hash) async {
+//   final response = await http.post(
+//     Uri.parse('http://127.0.0.1:8080/auth'),
+//     headers: {'Content-Type': 'application/json'},
+//     body: jsonEncode({'passwordHash': hash}),
+//   );
+
+//   if (response.statusCode == 200) {
+//     final data = jsonDecode(response.body);
+//     print(data);
+//   } else {
+//     print('Ошибка авторизации');
+//   }
+// }
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
@@ -155,12 +213,30 @@ final _router = GoRouter(
               ],
             ),
             GoRoute(
+              path: 'sales_baskets',
+              pageBuilder: (context, state) =>
+                  buildPageWithDefaultTransition<void>(
+                    context: context,
+                    state: state,
+                    child: SalesBasketsPage(),
+                  ),
+            ),
+            GoRoute(
               path: 'storage',
               pageBuilder: (context, state) =>
                   buildPageWithDefaultTransition<void>(
                     context: context,
                     state: state,
                     child: StoragePage(),
+                  ),
+            ),
+            GoRoute(
+              path: 'transfer',
+              pageBuilder: (context, state) =>
+                  buildPageWithDefaultTransition<void>(
+                    context: context,
+                    state: state,
+                    child: TransferPage(),
                   ),
             ),
             GoRoute(

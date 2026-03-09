@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SearchTableWidget extends StatelessWidget {
-  const SearchTableWidget({
+class BasketTable extends StatelessWidget {
+  const BasketTable({
     super.key,
     required this.gridHeight,
     required this.colorLineBorder,
@@ -13,7 +13,7 @@ class SearchTableWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: gridHeight * 2,
+      height: gridHeight * 3,
       decoration: BoxDecoration(
         border: Border.all(color: colorLineBorder, width: 0.5),
         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -36,7 +36,18 @@ class SearchTableWidget extends StatelessWidget {
                 SizedBox(
                   width: 80,
                   child: Text(
-                    'Доб.',
+                    'Уд.',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 80,
+                  child: Text(
+                    'Кол.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 16,
@@ -58,17 +69,6 @@ class SearchTableWidget extends StatelessWidget {
                   ),
                 ),
                 SizedBox(
-                  width: 100,
-                  child: Text(
-                    'Срок',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 18,
-                      color: Theme.of(context).colorScheme.onPrimary,
-                    ),
-                  ),
-                ),
-                SizedBox(
                   width: 150,
                   child: Text(
                     'Цена',
@@ -82,7 +82,18 @@ class SearchTableWidget extends StatelessWidget {
                 SizedBox(
                   width: 150,
                   child: Text(
-                    'Себест.',
+                    'Сумма',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  width: 100,
+                  child: Text(
+                    'Срок',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 18,

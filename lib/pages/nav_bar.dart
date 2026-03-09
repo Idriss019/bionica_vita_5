@@ -38,7 +38,7 @@ class _NavBarPageState extends State<NavBarPage> {
       ),
       Item(
         title: 'Продажи',
-        icon: const Icon(Icons.balance),
+        icon: const Icon(Icons.shopify),
         onPress: () {
           selectIndex = 1;
           onPress = false;
@@ -57,14 +57,35 @@ class _NavBarPageState extends State<NavBarPage> {
         iconIndex: 2,
       ),
       Item(
+        title: 'Корзины продаж',
+        icon: const Icon(Icons.shopping_basket_outlined),
+        onPress: () {
+          selectIndex = 3;
+          onPress = false;
+          context.go('/sales_baskets');
+        },
+        iconIndex: 3,
+      ),
+      Item(
         title: 'Склад',
         icon: const Icon(Icons.store),
         onPress: () {
           onPress = false;
           context.go('/storage');
-          selectIndex = 3;
+          selectIndex = 4;
         },
-        iconIndex: 3,
+        iconIndex: 4,
+      ),
+
+      Item(
+        title: 'Перенос',
+        icon: const Icon(Icons.sync_alt),
+        onPress: () {
+          onPress = false;
+          context.go('/transfer');
+          selectIndex = 5;
+        },
+        iconIndex: 5,
       ),
       Item(
         title: 'Расходы',
@@ -72,9 +93,9 @@ class _NavBarPageState extends State<NavBarPage> {
         onPress: () {
           onPress = false;
           context.go('/costs');
-          selectIndex = 4;
+          selectIndex = 6;
         },
-        iconIndex: 4,
+        iconIndex: 6,
       ),
       Item(
         title: 'Долги',
@@ -82,9 +103,9 @@ class _NavBarPageState extends State<NavBarPage> {
         onPress: () {
           onPress = false;
           context.go('/debts');
-          selectIndex = 5;
+          selectIndex = 7;
         },
-        iconIndex: 5,
+        iconIndex: 7,
       ),
       Item(
         title: 'Отчеты',
@@ -92,9 +113,9 @@ class _NavBarPageState extends State<NavBarPage> {
         onPress: () {
           onPress = false;
           context.go('/reports');
-          selectIndex = 6;
+          selectIndex = 8;
         },
-        iconIndex: 6,
+        iconIndex: 8,
       ),
       Item(
         title: 'Таблицы',
@@ -102,9 +123,9 @@ class _NavBarPageState extends State<NavBarPage> {
         onPress: () {
           onPress = false;
           context.go('/tables');
-          selectIndex = 7;
+          selectIndex = 9;
         },
-        iconIndex: 7,
+        iconIndex: 9,
       ),
       Item(
         title: 'Перерасчет',
@@ -112,9 +133,9 @@ class _NavBarPageState extends State<NavBarPage> {
         onPress: () {
           onPress = false;
           context.go('/recalculation');
-          selectIndex = 8;
+          selectIndex = 10;
         },
-        iconIndex: 8,
+        iconIndex: 10,
       ),
       Item(
         title: 'Персонал',
@@ -122,9 +143,9 @@ class _NavBarPageState extends State<NavBarPage> {
         onPress: () {
           onPress = false;
           context.go('/staff');
-          selectIndex = 9;
+          selectIndex = 11;
         },
-        iconIndex: 9,
+        iconIndex: 11,
       ),
       Item(
         title: 'Тема',
@@ -136,7 +157,7 @@ class _NavBarPageState extends State<NavBarPage> {
             themeProvider.updateTheme('light');
           }
         }),
-        iconIndex: 10,
+        iconIndex: 12,
       ),
       Item(
         title: 'Настройки',
@@ -144,9 +165,9 @@ class _NavBarPageState extends State<NavBarPage> {
         onPress: () {
           onPress = false;
           context.go('/settings');
-          selectIndex = 11;
+          selectIndex = 13;
         },
-        iconIndex: 11,
+        iconIndex: 13,
       ),
     ];
     List<Item> rows2 = rows.sublist(1);
@@ -259,7 +280,7 @@ class _NavBarPageState extends State<NavBarPage> {
                                             style: TextStyle(
                                               fontWeight: FontWeight.w500,
                                               letterSpacing: 1,
-                                              fontSize: 18,
+                                              fontSize: 16,
                                               color: Theme.of(
                                                 context,
                                               ).colorScheme.onPrimary,

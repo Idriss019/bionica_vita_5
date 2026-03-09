@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class SearchTableWidget extends StatelessWidget {
-  const SearchTableWidget({
+class TableWidget extends StatelessWidget {
+  const TableWidget({
     super.key,
     required this.gridHeight,
     required this.colorLineBorder,
@@ -13,7 +13,7 @@ class SearchTableWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: gridHeight * 2,
+      height: gridHeight * 3,
       decoration: BoxDecoration(
         border: Border.all(color: colorLineBorder, width: 0.5),
         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -34,12 +34,12 @@ class SearchTableWidget extends StatelessWidget {
             child: Row(
               children: [
                 SizedBox(
-                  width: 80,
+                  width: 200,
                   child: Text(
-                    'Доб.',
+                    'Должность',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 16,
+                      fontSize: 14,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
@@ -47,7 +47,7 @@ class SearchTableWidget extends StatelessWidget {
                 Expanded(
                   child: SizedBox(
                     child: Text(
-                      'Название',
+                      'Логин',
                       textAlign: TextAlign.center,
                       maxLines: 1,
                       style: TextStyle(
@@ -60,32 +60,32 @@ class SearchTableWidget extends StatelessWidget {
                 SizedBox(
                   width: 100,
                   child: Text(
-                    'Срок',
+                    'Пароль',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 14,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
                 ),
                 SizedBox(
-                  width: 150,
+                  width: 200,
                   child: Text(
-                    'Цена',
+                    'Код доступа',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 14,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),
                 ),
                 SizedBox(
-                  width: 150,
+                  width: 80,
                   child: Text(
-                    'Себест.',
+                    'Уд.',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                       color: Theme.of(context).colorScheme.onPrimary,
                     ),
                   ),

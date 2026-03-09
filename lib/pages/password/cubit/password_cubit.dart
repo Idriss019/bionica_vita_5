@@ -7,6 +7,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'password_state.dart';
 
+
 class PasswordCubit extends Cubit<PasswordState> {
   // String _password;
   
@@ -37,30 +38,30 @@ class PasswordCubit extends Cubit<PasswordState> {
   //   state.copyWith(passwordData: )
   // }
 
-  bool changePasswordToStart() {
-    String password = state.inputPassword;
-    if (password != '') {
-      for (var staff in state.passwordData) {
-        if (staff.password == password) {
-          emit(state.copyWith(
-            errorPassword: '',
-            inputPassword: '',
-            login: staff.login,
-            position: staff.position,
-            powers: staff.powers,
-            ));
-          return true;
-        }else if (password.length >= 4) {
-          emit(state.copyWith(errorPassword: 'Пароль не верный!'));
-        }
-      }
-      // emit(state.copyWith(errorPassword: 'Пароль не верный!'));
-      return false;
-    } else {
-      emit(state.copyWith(errorPassword: ''));
-      return false;
-    }
-  }
+  // bool changePasswordToStart() {
+  //   String password = state.inputPassword;
+  //   if (password != '') {
+  //     for (var staff in state.passwordData) {
+  //       if (staff.password == password) {
+  //         emit(state.copyWith(
+  //           errorPassword: '',
+  //           inputPassword: '',
+  //           login: staff.login,
+  //           position: staff.position,
+  //           powers: staff.powers,
+  //           ));
+  //         return true;
+  //       }else if (password.length >= 4) {
+  //         emit(state.copyWith(errorPassword: 'Пароль не верный!'));
+  //       }
+  //     }
+  //     // emit(state.copyWith(errorPassword: 'Пароль не верный!'));
+  //     return false;
+  //   } else {
+  //     emit(state.copyWith(errorPassword: ''));
+  //     return false;
+  //   }
+  // }
 
   bool changePermission(String power) {
     return state.powers[power]![0];
