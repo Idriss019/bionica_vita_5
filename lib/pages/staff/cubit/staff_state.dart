@@ -3,10 +3,23 @@
 
 part of 'staff_cubit.dart';
 
-class StaffState extends Equatable {const StaffState();
-
+class StaffState extends Equatable {
+  final List<StaffData> staffData;
+  const StaffState({
+    this.staffData = const [],
+  });
   @override
   List<Object> get props => [
+    staffData,
   ];
+
+  StaffState copyWith({
+    List<StaffData>? staffData,
+  }) {
+    return StaffState(
+      staffData: staffData ?? this.staffData,
+    );
+  }
 }
-final class StaffInitial extends StaffState {}
+class StaffInitial extends StaffState {
+}

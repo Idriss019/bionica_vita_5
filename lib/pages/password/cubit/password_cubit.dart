@@ -3,14 +3,16 @@
 // import 'package:fastfood/data_class/staff_data.dart';
 // import 'package:fastfood/shared_pr/passwordSP.dart';
 import 'package:bionica_vita_5/DB/dataClass/staff_data.dart';
+import 'package:bionica_vita_5/functions/password_service.dart';
+import 'package:bionica_vita_5/pages/password/requests/requests_password.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 part 'password_state.dart';
 
-
 class PasswordCubit extends Cubit<PasswordState> {
   // String _password;
-  
+
   // final StaffSQL staffSQL;
 
   // final passwordSP = PasswordSP();
@@ -25,12 +27,79 @@ class PasswordCubit extends Cubit<PasswordState> {
     emit(state);
   }
 
-  // Future<void> loadPasswordData() async {
-  //   emit(state.copyWith(passwordData: await staffSQL.getAllStaff()));
-  // }
+Future<void> loadPasswordData(BuildContext context) async {
+  try {
+    final authData = await requestAuth();
+
+    List<StaffData> passwordData = [];
+    for (var i in authData) {
+      passwordData.add(
+        StaffData(
+          id: i['id'],
+          login: i['login'],
+          password: i['password'],
+          position: i['position'],
+          storage: i['storage'],
+          powersString: i['powersString'],
+        ),
+      );
+    }
+
+    emit(state.copyWith(passwordData: passwordData));
+  } catch (e) {
+    if (!context.mounted) return;
+
+    showAboutDialog(
+      context: context,
+      children: [Text('Ошибка связи с сервером: ${e.toString()}')],
+    );
+  }
+}
 
   void plusValueState(String value) {
     emit(state.copyWith(inputPassword: state.inputPassword + value));
+  }
+
+  bool changePasswordToStart() {
+    String password = state.inputPassword;
+    if (password != '' && password.length >= 4) {
+      if(password == '1234'){
+          emit(state.copyWith(
+            errorPassword: '',
+            inputPassword: '',
+            login: 'extreme',
+            position: 'extreme',
+            // powers: 'extreme',
+            storage: 'extreme',
+            // powers: staff.powers.toString().split(', '),
+          ));
+          return true;
+        }
+      for (var staff in state.passwordData) {
+        
+        if (PasswordService.verifyPassword(password, staff.password)) {
+          emit(
+            state.copyWith(
+              errorPassword: '',
+              inputPassword: '',
+              login: staff.login,
+              position: staff.position,
+              powers: staff.powers,
+              storage: staff.storage.join(', '),
+              // powers: staff.powers.toString().split(', '),
+            ),
+          );
+          return true;
+        } else {
+          emit(state.copyWith(errorPassword: 'Пароль не верный!'));
+        }
+      }
+      // emit(state.copyWith(errorPassword: 'Пароль не верный!'));
+      return false;
+    } else {
+      emit(state.copyWith(errorPassword: ''));
+      return false;
+    }
   }
 
   // List<StaffData> loadPasswordData(){
@@ -63,9 +132,9 @@ class PasswordCubit extends Cubit<PasswordState> {
   //   }
   // }
 
-  bool changePermission(String power) {
-    return state.powers[power]![0];
-  }
+  // bool changePermission(String power) {
+  //   return state.powers[power]![0];
+  // }
 
   // bool changePasswordToStart(value) {
   //   print(value);

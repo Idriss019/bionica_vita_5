@@ -1,3 +1,4 @@
+import 'package:bionica_vita_5/pages/password/cubit/password_cubit.dart';
 import 'package:bionica_vita_5/theme/provider/theme_change.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -15,11 +16,13 @@ class _NavBarPageState extends State<NavBarPage> {
   bool onPress = false;
   int selectIndex = 1;
   late ThemeProvider themeProvider;
+  late PasswordCubit passwordCubit;
 
   @override
   void initState() {
     super.initState();
     themeProvider = Provider.of<ThemeProvider>(context, listen: false);
+    passwordCubit = context.read<PasswordCubit>();
   }
 
   @override
@@ -37,6 +40,10 @@ class _NavBarPageState extends State<NavBarPage> {
         iconIndex: 0,
       ),
       Item(
+        //         Icon(Icons.redeem)
+
+        // // Пример с ценником
+        // Icon(Icons.sell)  const Icon(Icons.shopify), Icon(Icons.add_shopping_cart),
         title: 'Продажи',
         icon: const Icon(Icons.shopify),
         onPress: () {
@@ -300,7 +307,10 @@ class _NavBarPageState extends State<NavBarPage> {
                               child: Align(
                                 alignment: Alignment.centerLeft,
                                 child: TextButton(
-                                  onPressed: () => context.go('/'),
+                                  onPressed: () {
+                                    // passwordCubit.loadPasswordData(context);
+                                    context.go('/');
+                                  },
                                   child: Text(
                                     'Выход',
                                     style: TextStyle(

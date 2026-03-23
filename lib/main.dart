@@ -5,6 +5,7 @@ import 'package:bionica_vita_5/pages/costs/widget/costs_page.dart';
 import 'package:bionica_vita_5/pages/debts/widget/debts_page.dart';
 import 'package:bionica_vita_5/pages/home_sales/widget/page.dart';
 import 'package:bionica_vita_5/pages/nav_bar.dart';
+import 'package:bionica_vita_5/pages/not_enough_powers.dart';
 import 'package:bionica_vita_5/pages/password/cubit/password_cubit.dart';
 import 'package:bionica_vita_5/pages/password/widget/page.dart';
 import 'package:bionica_vita_5/pages/purchases/widget/bringingParcel/widget/page.dart';
@@ -16,6 +17,7 @@ import 'package:bionica_vita_5/pages/recalculation/widget/page.dart';
 import 'package:bionica_vita_5/pages/reports/widget/page.dart';
 import 'package:bionica_vita_5/pages/sales_baskets/widget/sales_baskets_page.dart';
 import 'package:bionica_vita_5/pages/settings/widget/page.dart';
+import 'package:bionica_vita_5/pages/staff/cubit/staff_cubit.dart';
 import 'package:bionica_vita_5/pages/staff/widget/page.dart';
 import 'package:bionica_vita_5/pages/storage/widget/page.dart';
 import 'package:bionica_vita_5/pages/tables/widget/page.dart';
@@ -29,8 +31,8 @@ import 'package:provider/provider.dart';
 import 'package:window_size/window_size.dart';
 import 'package:bionica_vita_5/functions/password_service.dart';
 
-import 'package:http/http.dart' as http;
-import 'dart:convert';
+// import 'package:http/http.dart' as http;
+// import 'dart:convert';
 
 void main() {
   runApp(MyApp());
@@ -45,10 +47,17 @@ void main() {
 
   String root = PasswordService.hashPassword('1233');
   // $2a$12$rGURJI/G47gzTs/4ZpioE.50xFB5HC921zGv65ttju07M6Wd99FgG // 1233
+
+  String ana = r"$2a$12$9zSq/5RTzk4gKUME.xoYmenjAgBVAuu5qV0fNCiIISNIJEdWJQOrW";
+  //r"$2a$12$EXp32/c9USNKNt4TWt1PCeMag59VopsXfClN6DeptpV98.YXzuK6S";
+  // r'$2a$12$iL4rpvGU3MxzQPqqftF8BuG9Bck4ViHqeZt8/uxVLDP21vkopek5q'; // 1111
   String hash = root;
-  bool test = PasswordService.verifyPassword('1233', hash);
-  print('test: $test');
-  print('hash: $hash');
+  bool test = PasswordService.verifyPassword('1212', ana);
+  print('\ntest: $test');
+  int i = DateTime.now().millisecondsSinceEpoch;
+print(i);
+  // print('test: $test');
+  // print('hash: $hash');
   // print(test);
   // String powers = '';
   // for (int i = 0; i < 40; i++) {
@@ -111,6 +120,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (context) => SecondColorNotifier()),
 
         BlocProvider(create: (context) => PasswordCubit()),
+        BlocProvider<StaffCubit>(create: (_) => StaffCubit()),
       ],
       child: Consumer(
         builder: (context, ThemeProvider themeChange, child) {
@@ -331,6 +341,15 @@ final _router = GoRouter(
                     context: context,
                     state: state,
                     child: SettingsPage(),
+                  ),
+            ),
+            GoRoute(
+              path: 'notPowers',
+              pageBuilder: (context, state) =>
+                  buildPageWithDefaultTransition<void>(
+                    context: context,
+                    state: state,
+                    child: NotEnoughPowers(),
                   ),
             ),
           ],

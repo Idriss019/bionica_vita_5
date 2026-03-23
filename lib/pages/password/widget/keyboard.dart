@@ -27,7 +27,7 @@ class _KeyboardPasswordState extends State<KeyboardPassword> {
     passwordBloc = context.read<PasswordCubit>();
     _isObscured = true;
 
-    loadPass();
+    // loadPass();
     // Future.microtask(() async {
     //   await passwordBloc.loadPasswordData();
     //   // await passwordBloc.staffSQL.insertRoot();
@@ -35,7 +35,7 @@ class _KeyboardPasswordState extends State<KeyboardPassword> {
   }
 
   Future<void> loadPass() async {
-    // await passwordBloc.loadPasswordData();
+    await passwordBloc.loadPasswordData(context);
   }
   // @override
   // void dispose() {
@@ -66,9 +66,15 @@ class _KeyboardPasswordState extends State<KeyboardPassword> {
   //     // }
   //   }
   // }
+//   @override
+// void didChangeDependencies() {
+//   super.didChangeDependencies();
+//   print('initState!!');
+// }
 
   @override
   Widget build(BuildContext context) {
+    loadPass();
     // final bloc = context.read<PasswordCubit>();
 
     return Flexible(
@@ -139,86 +145,6 @@ class _KeyboardPasswordState extends State<KeyboardPassword> {
                             );
                           },
                         ),
-
-                        // BlocBuilder<PasswordCubit, PasswordState>(
-                        //   buildWhen: (previous, current){
-                        //     return previous.inputPassword != current.inputPassword;
-                        //   },
-                        //   builder: (context, state) {
-                        //     if (passwordBloc.changePasswordToStart(state.inputPassword)) {
-                        //       context.go('/home');
-                        //       passwordBloc.updateState(
-                        //         state.copyWith(inputPassword: ''),
-                        //       );
-                        //     }
-                        //     return Text(
-                        //       _isObscured
-                        //           ? '•' * state.inputPassword.length
-                        //           : state.inputPassword,
-                        //       style: const TextStyle(fontSize: 40),
-                        //       maxLines: 1,
-                        //       overflow: TextOverflow.ellipsis,
-                        //     );
-                        //   },
-                        // ),
-
-                        // BlocListener<PasswordCubit, PasswordState>(
-                        //     listenWhen: (previous, current) =>
-                        //         previous.inputPassword != current.inputPassword,
-                        //     listener: (context, state) {
-                        //       // setState(() {
-
-                        //       // });
-                        //       // реакция на изменение пароля
-                        //       // debugPrint('Password changed: ${state.inputPassword}');
-                        //     },
-                        //     child: Text(
-                        //       // _isObscured
-                        //       //     ? '•' * inputController.text.length
-                        //       //     : inputController.text,passwordBloc
-                        //       _isObscured
-                        //           ? '•' * passwordBloc.state.inputPassword.length
-                        //           : passwordBloc.state.inputPassword,
-                        //       // _isObscured
-                        //       //     ? '•' * passwordController.text.length
-                        //       //     : passwordController.text,
-                        //       style: TextStyle(fontSize: 40),
-                        //       maxLines: 1,
-                        //       overflow: TextOverflow.ellipsis,
-                        //     ),
-                        //   ),
-
-                        // child: BlocBuilder<PasswordCubit, PasswordState>(
-                        //   buildWhen: (c, s) => c.inputPassword != s.inputPassword,
-                        //   builder: (_, state) {
-                        //     // return TextField(
-                        //     //   key: ValueKey(state.fieldVersion),
-                        //     // );
-                        //     return Text(
-                        //       // _isObscured
-                        //       //     ? '•' * inputController.text.length
-                        //       //     : inputController.text,
-                        //       _isObscured
-                        //           ? '•' * passwordController.text.length
-                        //           : passwordController.text,
-                        //       style: TextStyle(fontSize: 40),
-                        //       maxLines: 1,
-                        //       overflow: TextOverflow.ellipsis,
-                        //     );
-                        //   },
-                        // ),
-
-                        // child: Text(
-                        //   _isObscured
-                        //       ? '•' * inputController.text.length
-                        //       : inputController.text,
-                        //   // _isObscured
-                        //   //     ? '•' * passwordController.text.length
-                        //   //     : passwordController.text,
-                        //   style: TextStyle(fontSize: 40),
-                        //   maxLines: 1,
-                        //   overflow: TextOverflow.ellipsis,
-                        // ),
                       ),
                       IconButton(
                         iconSize: 40,
@@ -236,321 +162,31 @@ class _KeyboardPasswordState extends State<KeyboardPassword> {
                     ],
                   ),
                 ),
-                // SizedBox( // Text Field
-                //   width: 270,
-                //   height: 100,
-                //   /* Строка для ввода пароля */
-                //   child: TextField(
-                //     cursorColor: Theme.of(
-                //       context,
-                //     ).colorScheme.onSecondary,
-                //     autofocus: true,
-                //     style: TextStyle(
-                //       // fontFamily: 'Verdana',
-                //       // fontStyle: FontStyle.italic,
-                //       fontWeight: FontWeight.w600,
-                //       fontSize: 35,
-                //     ),
-                //     decoration: InputDecoration(
-                //       focusedBorder: OutlineInputBorder(
-                //         borderSide: BorderSide(
-                //           color: Theme.of(
-                //             context,
-                //           ).colorScheme.onSecondary,
-                //           width: 1.5,
-                //         ),
-                //       ),
-                //       // border: OutlineInputBorder(
-                //       //     borderSide:
-                //       //         BorderSide(color: Colors.black, width: 1.5)),
-                //       suffixIcon: IconButton(
-                //         onPressed: () {
-                //           setState(() {
-                //             _isObscured = !_isObscured;
-                //           });
-                //         },
-                //         icon: Icon(Icons.visibility),
-                //       ),
-                //     ),
-                //     // onChanged: (value) {},
-                //     onChanged: (value) {
-                //       // print(passwordController.text);
-                //       // if (bloc.changePasswordToStart(passwordController.text)) {
-                //       //   context.go('/home');
-                //       //   value = '';
-                //       // }
-                //     },
-                //     // keyboardType: TextInputType.numberWithOptions(),
-                //     controller: passwordController,
-                //     obscureText: _isObscured,
-                //     inputFormatters: <TextInputFormatter>[
-                //       FilteringTextInputFormatter
-                //           .digitsOnly, // С таким фильтром могут быть введены только числа
-                //     ],
-                //   ),
-                // ),
               ],
             ),
-            // SizedBox(
-            //   child: Text(
-            //     'Клиент предоставил',
-            //     style: TextStyle(fontSize: 30),
-            //   ),
-            // ),
-            // Row(
-            //   children: [
-            //     Expanded(
-            //       child: SizedBox(
-            //         child: Column(
-            //           children: [
-            //             SizedBox(
-            //               child: Text(
-            //                 'Нал',
-            //                 style: TextStyle(fontSize: 20),
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               child: Text(
-            //                 '2 000',
-            //                 style: TextStyle(fontSize: 30),
-            //               ),
-            //             ),
-            //           ],
-            //         ),
-            //       ),
-            //     ),
-            //     Expanded(
-            //       child: SizedBox(
-            //         child: Column(
-            //           children: [
-            //             SizedBox(
-            //               child: Text(
-            //                 'Карта',
-            //                 style: TextStyle(fontSize: 20),
-            //               ),
-            //             ),
-            //             SizedBox(
-            //               child: Text(
-            //                 '3 000',
-            //                 style: TextStyle(fontSize: 30),
-            //               ),
-            //             ),
-            //           ],
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 2),
-            //   child: Divider(height: 2, color: Colors.black),
-            // ),
-            // Padding(
-            //   padding: const EdgeInsets.only(top: 2),
-            //   child: Divider(height: 2, color: Colors.black),
-            // ),
-            // SizedBox(
-            //   child: Text('Всего', style: TextStyle(fontSize: 25)),
-            // ),
-            // SizedBox(
-            //   child: Text('5 000', style: TextStyle(fontSize: 40)),
-            // ),
-            // Row(
-            //   children: [
-            //     Expanded(
-            //       child: Column(
-            //         children: [
-            //           SizedBox(
-            //             child: Text(
-            //               'Итог',
-            //               style: TextStyle(fontSize: 25),
-            //             ),
-            //           ),
-            //           SizedBox(
-            //             child: Text(
-            //               '4 500',
-            //               style: TextStyle(fontSize: 40),
-            //             ),
-            //           ),
-            //         ],
-            //       ),
-            //     ),
-            //     Expanded(
-            //       child: Column(
-            //         children: [
-            //           SizedBox(
-            //             child: Text(
-            //               'Скидка %',
-            //               style: TextStyle(fontSize: 20),
-            //             ),
-            //           ),
-            //           SizedBox(
-            //             child: Text(
-            //               '0',
-            //               style: TextStyle(fontSize: 40),
-            //             ),
-            //           ),
-            //         ],
-            //       ),
-            //     ),
-            //   ],
-            // ),
-            // Expanded(child: SizedBox()),
+
             SizedBox(
               child: Column(
                 children: [
                   Row(
                     children: [
-                      Expanded(
-                        child: SizedBox(
-                          child: TextButton(
-                            onPressed: () {
-                              passwordBloc.plusValueState('1');
-                              context.go('/home');
-                              // passwordController.text += '1';
-                              // // setState(() {
-                              // // ограничить до 12 символов!
-                              // passwordController.text += '1';
-                              // // passwordBloc.inputPassword(
-                              // //   '${passwordBloc.state.inputPassword}1',
-                              // // );
-                              // print(passwordBloc.state.inputPassword);
-                              // print(passwordController.text);
-                              // // });
-                            },
-                            child: Text('1', style: TextStyle(fontSize: 40)),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: SizedBox(
-                          child: TextButton(
-                            onPressed: () {
-                              passwordBloc.plusValueState('2');
-                              // passwordController.text += '2';
-                              // setState(() {
-                              // passwordController.text += '2';
-                              // passwordBloc.inputPassword(
-                              //   '${passwordBloc.state.inputPassword}2',
-                              //   // passwordController.text += '2',
-                              // );
-                              // context.go('/home');
-
-                              //   passwordController.text = '';
-                              // passwordBloc.changePasswordToStart('123');
-                              // passwordController.text += '2';
-                              // });
-                              // if (bloc.changePasswordToStart(
-                              //   passwordController.text,
-                              // )) {
-                              //   context.go('/home');
-                              //   passwordController.text = '';
-                              // }
-                            },
-                            child: Text('2', style: TextStyle(fontSize: 40)),
-                          ),
-                        ),
-                      ),
+                      KeyboardButton(passwordBloc: passwordBloc, value: '1'),
+                      KeyboardButton(passwordBloc: passwordBloc, value: '2'),
                       KeyboardButton(passwordBloc: passwordBloc, value: '3'),
                     ],
                   ),
                   Row(
                     children: [
-                      Expanded(
-                        child: SizedBox(
-                          child: TextButton(
-                            onPressed: () {
-                              passwordBloc.plusValueState('4');
-                              // inputController.text += '4';
-                              // setState(() {
-                              //   passwordController.text += '4';
-                              // });
-                            },
-                            child: Text('4', style: TextStyle(fontSize: 40)),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: SizedBox(
-                          child: TextButton(
-                            onPressed: () {
-                              passwordBloc.plusValueState('5');
-                              // inputController.text += '5';
-                              // setState(() {
-                              //   passwordController.text += '5';
-                              // });
-                            },
-                            child: Text('5', style: TextStyle(fontSize: 40)),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: SizedBox(
-                          child: TextButton(
-                            onPressed: () {
-                              passwordBloc.plusValueState('6');
-                              // inputController.text += '6';
-                              // setState(() {
-                              //   passwordController.text += '6';
-                              // });
-                              // print(passwordController.text);
-                              // if (bloc.changePasswordToStart(
-                              //   passwordController.text,
-                              // )) {
-                              //   context.go('/home');
-                              //   passwordController.text = '';
-                              // }
-                            },
-                            child: Text('6', style: TextStyle(fontSize: 40)),
-                          ),
-                        ),
-                      ),
+                      KeyboardButton(passwordBloc: passwordBloc, value: '4'),
+                      KeyboardButton(passwordBloc: passwordBloc, value: '5'),
+                      KeyboardButton(passwordBloc: passwordBloc, value: '6'),
                     ],
                   ),
                   Row(
                     children: [
-                      Expanded(
-                        child: SizedBox(
-                          child: TextButton(
-                            onPressed: () {
-                              passwordBloc.plusValueState('7');
-                              // inputController.text += '7';
-                              // setState(() {
-                              //   passwordController.text += '7';
-                              // });
-                            },
-                            child: Text('7', style: TextStyle(fontSize: 40)),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: SizedBox(
-                          child: TextButton(
-                            onPressed: () {
-                              passwordBloc.plusValueState('8');
-                              // inputController.text += '8';
-                              // setState(() {
-                              //   passwordController.text += '8';
-                              // });
-                            },
-                            child: Text('8', style: TextStyle(fontSize: 40)),
-                          ),
-                        ),
-                      ),
-                      Expanded(
-                        child: SizedBox(
-                          child: TextButton(
-                            onPressed: () {
-                              passwordBloc.plusValueState('9');
-                              // inputController.text += '9';
-                              // setState(() {
-                              //   passwordController.text += '9';
-                              // });
-                            },
-                            child: Text('9', style: TextStyle(fontSize: 40)),
-                          ),
-                        ),
-                      ),
+                      KeyboardButton(passwordBloc: passwordBloc, value: '7'),
+                      KeyboardButton(passwordBloc: passwordBloc, value: '8'),
+                      KeyboardButton(passwordBloc: passwordBloc, value: '9'),
                     ],
                   ),
                   Row(
@@ -575,20 +211,7 @@ class _KeyboardPasswordState extends State<KeyboardPassword> {
                           ),
                         ),
                       ),
-                      Expanded(
-                        child: SizedBox(
-                          child: TextButton(
-                            onPressed: () {
-                              passwordBloc.plusValueState('0');
-                              // inputController.text += '0';
-                              // setState(() {
-                              //   passwordController.text += '0';
-                              // });
-                            },
-                            child: Text('0', style: TextStyle(fontSize: 40)),
-                          ),
-                        ),
-                      ),
+                      KeyboardButton(passwordBloc: passwordBloc, value: '0'),
                       Expanded(
                         child: SizedBox(
                           child: IconButton(
@@ -642,44 +265,9 @@ class _KeyboardPasswordState extends State<KeyboardPassword> {
                       ),
                     ],
                   ),
-                  // Row(
-                  //   children: [
-                  //     Expanded(
-                  //       child: SizedBox(
-                  //         child: IconButton(
-                  //           onPressed: () {},
-                  //           icon: const Icon(
-                  //             size: 40,
-                  //             Icons.refresh,
-                  //             // color: Colors.black,
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //     Expanded(
-                  //       child: SizedBox(
-                  //         child: IconButton(
-                  //           onPressed: () {},
-                  //           icon: const Icon(
-                  //             size: 40,
-                  //             Icons.backspace,
-                  //             // color: Colors.black,
-                  //           ),
-                  //         ),
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
                 ],
               ),
             ),
-            // SizedBox(
-            //   width: double.infinity,
-            //   child: TextButton(
-            //     onPressed: () {},
-            //     child: Text('Чек', style: TextStyle(fontSize: 40)),
-            //   ),
-            // ),
           ],
         ),
       ),
@@ -703,6 +291,13 @@ class KeyboardButton extends StatelessWidget {
         child: TextButton(
           onPressed: () {
             passwordBloc.plusValueState(value);
+            if (passwordBloc.changePasswordToStart()) {
+              Future.delayed(Duration(seconds: 1), () {
+                if (context.mounted) return context.go('/home');
+                // context.go('/home');
+                // context.go('/notPowers');
+              });
+            }
           },
           child: Text(value, style: TextStyle(fontSize: 40)),
         ),
@@ -710,3 +305,12 @@ class KeyboardButton extends StatelessWidget {
     );
   }
 }
+
+/* 
+Зачем использовать mounted?
+
+Когда вы работаете с асинхронными операциями, такими как Future.delayed, существует риск, что виджет может быть удалён из дерева виджетов до того, как асинхронная операция завершится. В этом случае попытка обновить состояние или выполнить навигацию вызовет ошибку, потому что BuildContext больше не будет доступен. Проверка mounted помогает избежать таких ошибок, гарантируя, что вы выполняете действия только при активном виджете.
+
+Так что, в данном примере вам просто нужно использовать mounted перед вызовом context.go(), чтобы убедиться, что навигация не произойдёт, если виджет уже был удалён.
+
+ */

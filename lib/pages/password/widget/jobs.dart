@@ -26,6 +26,7 @@ class _JobsDataState extends State<JobsData> {
   void initState() {
     super.initState();
     passwordBloc = context.read<PasswordCubit>();
+    
     // context.read<ThemeCubit>().loadTheme();
     // _isObscured = true;
   }
@@ -38,6 +39,7 @@ class _JobsDataState extends State<JobsData> {
 
   @override
   Widget build(BuildContext context) {
+    // print('initState!!');
     final bloc = context.read<PasswordCubit>();
 
     return StreamBuilder<PasswordState>(
@@ -105,14 +107,17 @@ class _JobsDataState extends State<JobsData> {
                         builder: (context, state) {
                           return SizedBox(
                             height: 100,
-                            child: Text(
-                              state.position.capitalize(),
-                              style: TextStyle(
-                                fontSize: 35,
-                                fontStyle: FontStyle.italic,
-                                fontWeight: FontWeight.w500,
-                                // color: Theme.of(context).colorScheme.onSecondary,
-                                decoration: TextDecoration.none,
+                            child: Padding(
+                              padding: const EdgeInsets.only(top: 10),
+                              child: Text(
+                                state.position.capitalize(),
+                                style: TextStyle(
+                                  fontSize: 26,
+                                  fontStyle: FontStyle.italic,
+                                  fontWeight: FontWeight.w500,
+                                  // color: Theme.of(context).colorScheme.onSecondary,
+                                  decoration: TextDecoration.none,
+                                ),
                               ),
                             ),
                           );

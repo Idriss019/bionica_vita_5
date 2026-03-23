@@ -1,3 +1,4 @@
+import 'package:bionica_vita_5/functions/custom_show_dialog.dart';
 import 'package:bionica_vita_5/globalWidgets/custom_color_button.dart';
 import 'package:bionica_vita_5/globalWidgets/global_widgets.dart';
 import 'package:flutter/material.dart';
@@ -82,19 +83,20 @@ class FindWidget extends StatelessWidget {
                     ), //DateTime.now().toString().substring(0, 10),
                     textStyle: textStyle,
                     onPressed: () async {
-                      final initialDate = DateTime.now();
-                      final picked = await showDatePicker(
-                        context: context,
-                        initialDate: initialDate,
-                        firstDate: DateTime(2000),
-                        lastDate: DateTime(2100),
-                      );
+                      dialogNotPowers(context);
+                      // final initialDate = DateTime.now();
+                      // final picked = await showDatePicker(
+                      //   context: context,
+                      //   initialDate: initialDate,
+                      //   firstDate: DateTime(2000),
+                      //   lastDate: DateTime(2100),
+                      // );
 
-                      if (picked == null) {
-                        return;
-                      }
+                      // if (picked == null) {
+                      //   return;
+                      // }
 
-                      onDateChanged(picked.millisecondsSinceEpoch);
+                      // onDateChanged(picked.millisecondsSinceEpoch);
                     },
                   ),
                 ),
